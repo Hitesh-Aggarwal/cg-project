@@ -7,7 +7,7 @@ int screen = 0;
 
 // Introduction Page
 char name[35] = "Black Pearl - The Cursed Ship";
-char college[100] = "Thapar Institute of Technology";
+char college[100] = "Thapar Institute Engineering of Technology";
 char dept[100] = "Department of Computer Science & Engineering";
 char heading[100] = "Made by                                                   "
                     "              Guides";
