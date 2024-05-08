@@ -119,30 +119,30 @@ void ship(float x) {
   glPushMatrix();
   glTranslatef(x, 0, 0);
   // base
-  glColor3f(0.2 + col, 0.2 + col, 0.2 + col);
+  glColor3f(0.0 + col, 0.0 + col, 0.0 + col);
   glBegin(GL_POLYGON);
-  glVertex2f(10, 119);
-  glVertex2f(10, 110);
-  glVertex2f(41, 70);
-  glColor3f(0.3 + col, 0.3 + col, 0.8 + col);
+  glVertex2f(20, 119);
+  glVertex2f(10, 120);
+  glVertex2f(21, 70);
+  glColor3f(0.2 + col, 0.5 + col, 0.2 + col);
   glVertex2f(219, 42);
   glVertex2f(292, 98);
   glVertex2f(300, 110);
   glEnd();
 
   // p1
-  glColor3f(1.0 + col, 1.0 + col, 1.0 + col);
+  glColor3f(0.5 + col, 0.2 + col, 1.0 + col);
   glBegin(GL_POLYGON);
   glVertex2f(35, 118);
   glVertex2f(35, 128);
-  glColor3f(0.5 + col, 0.5 + col, 0.5 + col);
+  glColor3f(0.2 + col, 1.0 + col, 0.5 + col);
   glVertex2f(239, 131);
   glVertex2f(239, 111);
   glVertex2f(35, 119);
   glEnd();
   // side
   glBegin(GL_POLYGON);
-  glColor3f(0.8 + col, 0.8 + col, 0.8 + col);
+  glColor3f(0.9 + col, 0.5 + col, 0.3 + col);
   glVertex2f(239, 131);
   glVertex2f(239, 111);
   glVertex2f(257, 110);
@@ -150,7 +150,7 @@ void ship(float x) {
   glEnd();
 
   // p2
-  glColor3f(0.0 + col, 0.0 + col, 0.5 + col);
+  glColor3f(0.3 + col, 0.8 + col, 0.5 + col);
   glBegin(GL_POLYGON);
   glVertex2f(45, 129);
   glVertex2f(45, 140);
@@ -159,7 +159,7 @@ void ship(float x) {
   glEnd();
   // side
   glBegin(GL_POLYGON);
-  glColor3f(0.1 + col, 0.1 + col, 0.8 + col);
+  glColor3f(0.5 + col, 0.2 + col, 0.8 + col);
   glVertex2f(233, 149);
   glVertex2f(233, 131);
   glVertex2f(254, 128);
@@ -223,7 +223,7 @@ void ship(float x) {
 
 void water() {
   glBegin(GL_POLYGON);
-  glColor3f(0.2 + col, 0.2 + col, 0.6 + col);
+  glColor3f(0.4 + col, 0.4 + col, 1.0 + col);
   glVertex2f(00, 00);
   glVertex2f(00, 300);
   glVertex2f(1024, 300);
@@ -233,7 +233,7 @@ void water() {
 
 void mountain2() {
   float a, b;
-  glColor3f(0.6 + col, 0.4 + col, 0.2 + col);
+  glColor3f(0.5 + col, 0.3 + col, 0.1 + col);
   for (a = 0, b = 300; a < 1025; a = a + 80) {
     glBegin(GL_POLYGON);
     glVertex2f(-40 + a, b);
@@ -257,7 +257,7 @@ void mountain() {
 
 void mountain3() {
   float a, b;
-  glColor3f(0.4 + col, 0.2 + col, 0.0 + col);
+  glColor3f(0.4 + col, 0.2 + col, 0.1 + col);
   for (a = 0, b = 350; a < 1025; a = a + 80) {
     glBegin(GL_POLYGON);
     glVertex2f(0 + a, b);
@@ -278,7 +278,7 @@ void flag(float x) {
   glVertex2f(242, 250);
   glVertex2f(242, 160);
   glEnd();
-  glColor3f(0.8, 0.1, 0.1);
+  glColor3f(0.2, 0.8, 0.1);
   glBegin(GL_POLYGON);
   glVertex2f(245, 250);
   glVertex2f(275, 215);
@@ -292,16 +292,18 @@ void flag(float x) {
   glPopMatrix();
 }
 void crackers() {
-  // if(cf==1)
-  {
-    glColor3f(1, 0, 0);
-    glBegin(GL_POLYGON);
-    glVertex2f(100 + pos, 100 + pr);
-    glVertex2f(100 + pos, 110 + pr);
-    glVertex2f(108 + pos, 110 + pr);
-    glVertex2f(108 + pos, 100 + pr);
-    glEnd();
-    glFlush();
+  glColor3f(1, 0, 0);
+  glBegin(GL_POLYGON);
+  glVertex2f(100 + pos, 100 + pr);
+  glVertex2f(100 + pos, 120 + pr);
+  glVertex2f(108 + pos, 120 + pr);
+  glVertex2f(108 + pos, 100 + pr);
+  glEnd();
+  glFlush();
+  // }
+
+  if (pr >= 700 && pr <= 800 && pos <= pl - 20 && pl <= pos + 150) {
+    pl = 1150; // If collision occurs, hide the plane
   }
   glutPostRedisplay();
 }
@@ -395,8 +397,8 @@ void display() {
     flag(pos);
 
     plane();
-    pl += 2;
-    if (pl == 1200)
+    pl += 4;
+    if (pl >= 1200)
       pl = 0;
 
     if (i == 1) {
@@ -470,10 +472,10 @@ void keyboard(unsigned char key, int x, int y) {
     glutPostRedisplay();
     break;
   case '6':
-    pos += 2;
+    pos += 4;
     break;
   case '4':
-    pos -= 2;
+    pos -= 4;
     break;
   case 'z':
     cf = 1;
@@ -489,10 +491,10 @@ void SpecialInput(int key, int x, int y) {
   case GLUT_KEY_DOWN:
     break;
   case GLUT_KEY_LEFT:
-    pos -= 2;
+    pos -= 4;
     break;
   case GLUT_KEY_RIGHT:
-    pos += 2;
+    pos += 4;
     break;
   }
 }
