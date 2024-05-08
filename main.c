@@ -9,10 +9,10 @@ int screen = 0;
 char name[35] = "Black Pearl - The Cursed Ship";
 char college[100] = "Thapar Institute Engineering of Technology";
 char dept[100] = "Department of Computer Science & Engineering";
-char heading[100] = "Made by                                                   "
-                    "              Guides";
-char row1[100] = "                                Prof. ";
-char row2[100] = "                            Prof.";
+char heading[100] =
+    "Made by Aaryan Sood (102103574)\nHitesh Aggarwal(102103596)";
+char row1[100] = "Submitted to:\n";
+char row2[100] = "Ms. Diksha Arora";
 char emsg[100] = "Press ENTER to start";
 char title[50] = "Sailing of Ship Day And NighT...!";
 char dash[100] = "-------------------------------------------------------------"
